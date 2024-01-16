@@ -1,17 +1,18 @@
 package com.zenika.zacademy;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import net.datafaker.Faker;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+import java.util.Locale;
+
+public class Main {
+    Faker faker = new Faker(new Locale("fr"));
+
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String phoneNumber = faker.phoneNumber().phoneNumber();
+    String email = faker.internet().emailAddress();
+    String adress = faker.address().fullAddress();
+
+    Person Maximilien = new Student(firstName, lastName, phoneNumber, email, adress);
+
 }

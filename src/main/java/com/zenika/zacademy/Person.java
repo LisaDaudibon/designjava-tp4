@@ -10,11 +10,11 @@ public abstract class Person {
     public String email;
 
     public Person (String firstName, String lastName, String phoneNumber, String adress, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = firstName.toLowerCase();
+        this.lastName = lastName.toLowerCase();
         this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.adress = adress;
+        this.email = email.toLowerCase();
+        this.adress = adress.toLowerCase();
     }
 
     @Override

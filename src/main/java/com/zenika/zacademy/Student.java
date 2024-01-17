@@ -8,7 +8,7 @@ public class Student extends Person {
     @Override
     public String toString() {
         return String.format("""
-                Student %s %s
+                Élèves %s %s
                 \uD83D\uDCF1: %s
                 \uD83D\uDCE7: %s
                 \uD83D\uDCE0: %s

@@ -10,6 +10,6 @@ public class Trainer extends Person {
         return "Formateur " + firstName + " " + lastName + "\n" +
                 "\uD83D\uDCF1: " + phoneNumber + "\n" +
                 "\uD83D\uDCE7: " + email + "\n" +
-                "\uD83C\uDFE0: " + adress;
+                "\uD83C\uDFE0: " + adress + "\n";
     }
 }

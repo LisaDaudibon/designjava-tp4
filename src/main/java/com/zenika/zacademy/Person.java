@@ -1,5 +1,7 @@
 package com.zenika.zacademy;
 
+import java.util.Objects;
+
 public abstract class Person {
     public String firstName;
     public String lastName;
@@ -7,7 +9,7 @@ public abstract class Person {
     public String adress;
     public String email;
 
-    public Person (String firstName, String lastName, String phoneNumber, String email, String adress) {
+    public Person (String firstName, String lastName, String phoneNumber, String adress, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -15,4 +17,16 @@ public abstract class Person {
         this.adress = adress;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(email, person.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
 }

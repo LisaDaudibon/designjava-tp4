@@ -1,31 +1,41 @@
 package com.zenika.zacademy;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.lang.String.valueOf;
 
 public class Directory {
-    public ArrayList<Person> persons = new ArrayList<>();
+    public HashSet<Person> persons = new HashSet<>();
 
-    public ArrayList<Person> getPersons() {
+    public HashSet<Person> getPersons() {
         return persons;
     }
 
     public void addUnique(Person newPerson) {
-        boolean isUnique = true;
-        for (Person person: persons) {
-            if (person.equals(newPerson)) {
-                isUnique = false;
-                break;
-            }
-        }
-        if (isUnique){
-            persons.add(newPerson);
-        }
-
+        persons.add(newPerson);
     }
 
+    public Person SearchByName (String searchNamed) {
+        Scanner sc = new Scanner(System.in);
+        String userInput = "";
 
-//    public class String Search () {
+        String searchNamedByLowerCase = searchNamed.toLowerCase();
+
+        for (Person currentPerson : persons) {
+            if (searchNamedByLowerCase.contains(currentPerson.firstName) ||searchNamedByLowerCase.contains(currentPerson.lastName)) {
+                return currentPerson;
+            }
+        }
+
+        return null;
+
+//        Stream<Person> stringStream = persons.stream()
+//                .filter(person -> (Objects.equals(person.firstName, userSearchInput))
+//        );
 //
-//    }
+//        System.out.println(stringStream);
+    }
     
 }

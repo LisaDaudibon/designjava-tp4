@@ -7,12 +7,12 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Elève " +
-                "Prénom : " + firstName +
-                "Nom : " + lastName + "\n" +
-                "\uD83D\uDCF1: " + phoneNumber + "\n" +
-                "\uD83D\uDCE7: " + email + "\n" +
-                "\uD83C\uDFE0: " + adress;
+        return String.format("""
+                Student %s %s
+                \uD83D\uDCF1: %s
+                \uD83D\uDCE7: %s
+                \uD83D\uDCE0: %s
+                """, firstName, lastName, phoneNumber, email, adress);
     }
 
 }

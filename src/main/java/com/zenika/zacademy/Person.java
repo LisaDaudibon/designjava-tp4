@@ -13,7 +13,7 @@ public abstract class Person {
         this.firstName = firstName.toLowerCase();
         this.lastName = lastName.toLowerCase();
         this.phoneNumber = phoneNumber;
-        this.email = email.toLowerCase();
+        this.email = email;
         this.adress = adress.toLowerCase();
     }
 

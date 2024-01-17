@@ -23,19 +23,28 @@ public class Directory {
 
         String searchNamedByLowerCase = searchNamed.toLowerCase();
 
-        for (Person currentPerson : persons) {
+//        for (Person currentPerson : persons) {
+//            if (searchNamedByLowerCase.contains(currentPerson.firstName) ||searchNamedByLowerCase.contains(currentPerson.lastName)) {
+//                return currentPerson;
+//            }
+//        }
+//
+//        return null;
+
+        List <Person> personFound = persons.stream().filter(currentPerson -> {
             if (searchNamedByLowerCase.contains(currentPerson.firstName) ||searchNamedByLowerCase.contains(currentPerson.lastName)) {
-                return currentPerson;
+                return true;
             }
+            return false;
+        }).toList();
+
+        if (personFound.isEmpty()) {
+            return null;
+        } else {
+            System.out.println(personFound.getFirst());
+            return personFound.getFirst();
         }
 
-        return null;
-
-//        Stream<Person> stringStream = persons.stream()
-//                .filter(person -> (Objects.equals(person.firstName, userSearchInput))
-//        );
-//
-//        System.out.println(stringStream);
     }
-    
+
 }

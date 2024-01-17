@@ -5,6 +5,7 @@ import net.datafaker.Faker;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -78,12 +79,16 @@ public class Main {
         directory.addUnique(Person10);
 
         Person karine = new Trainer("Karine", "Sabatier", "0701020304", "Rue de rennes", "karineagile4ever@yahoo.fr");
+        directory.addUnique(karine);
+//        System.out.println(karine);
+        System.out.println(directory.getPersons());
 
-        directory.SearchByName("karine");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Qui recherchez vous ? ");
 
-//        zacademyDirectory.addUnique(maximilien);
+        String userInput = sc.nextLine();
+        directory.SearchByName(userInput);
 
-//        Iterator iter = zacademyDirectory.getPersons().iterator();
 
     }
 

@@ -16,7 +16,7 @@ public class Directory {
         persons.add(newPerson);
     }
 
-    public Person SearchByName (String searchNamed) {
+    public Person searchByName (String searchNamed) {
         String searchNamedByLowerCase = searchNamed.toLowerCase();
 
         List <Person> personFound = persons.stream().filter(currentPerson -> {
@@ -38,16 +38,15 @@ public class Directory {
         promotions.add(newPromotion);
     }
 
-    public String searchByPromotionNumber (Integer promotionNumber) {
+    public Promotion searchByPromotionNumber (Integer promotionNumber) throws NoSuchElementException {
         List <Promotion> promotionFound = promotions.stream().filter(currentPromotion -> {
             return promotionNumber.equals(currentPromotion.id);
         }).toList();
 
         if (promotionFound.isEmpty()) {
-            return ("Aucune promotion trouvée");
-        } else {
-            ;
-            return promotionFound.toString();
+            throw new NoSuchElementException( "Aucune promotion trouvée !" + promotionFound);
+        } else{
+            return promotionFound.getFirst();
         }
     }
 

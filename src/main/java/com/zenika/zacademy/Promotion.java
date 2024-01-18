@@ -11,17 +11,15 @@ public class Promotion {
         this.name = name;
     }
 
-    HashSet<Person> students = new HashSet<>();
     HashSet<Person> trainers = new HashSet<>();
-
-    public HashSet<Person> getStudents() {
-        return students;
-    }
+    HashSet<Person> students = new HashSet<>();
 
     public HashSet<Person> getTrainers() {
         return trainers;
     }
-
+    public HashSet<Person> getStudents() {
+        return students;
+    }
     public void addStudentOrTrainerToPromotion( Person newPerson) {
         if ( ("Student").equals(newPerson.getClass().getSimpleName()) ) {
             students.add(newPerson);
@@ -32,14 +30,19 @@ public class Promotion {
 
     @Override
     public String toString() {
-        return String.format("""
-                Promotion %s n°%s
-                 
-                👷 Formateurs:
-                %s
-                
-                🧑‍💻 Élèves:
-                %s
-                """, name, id, trainers, students);
+        StringBuilder message = new StringBuilder(String.format("Promotion %s N°%s\n\n", name, id));
+        if (!trainers.isEmpty())
+            message.append("👷 Formers:\n\n");
+        for (Person trainer : trainers){
+            message.append(trainer.toString()).append("\n");
+        }
+        if (!students.isEmpty())
+            message.append("🧑‍🎓 Élèves:\n\n");
+        for (Person student : students){
+            message.append(student.toString()).append("\n");
+        }
+        return message.toString();
     }
+
+
 }

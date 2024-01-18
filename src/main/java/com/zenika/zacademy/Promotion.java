@@ -15,10 +15,10 @@ public class Promotion {
     HashSet<Person> students = new HashSet<>();
 
     public HashSet<Person> getTrainers() {
-        return trainers;
+        return new HashSet<>(trainers);
     }
     public HashSet<Person> getStudents() {
-        return students;
+        return new HashSet<>(students);
     }
     public void addStudentOrTrainerToPromotion( Person newPerson) {
         if ( ("Student").equals(newPerson.getClass().getSimpleName()) ) {

@@ -79,7 +79,7 @@ public class Main {
         directory.addUnique(person10);
 
         Person karine = new Trainer("Karine", "Sabatier", "0701020304", "Rue de rennes", "karineagile4ever@yahoo.fr");
-        Person max = new Student("Kari", "Sabat", "07010203", "Rue de re", "karineagile@yahoo.fr");
+        Person xavier = new Student("Xavier", "Cassel", "0701059304", "Rue de dinan", "karineagile@yahoo.fr");
         directory.addUnique(karine);
 //        System.out.println(karine);
 //        System.out.println(directory.getPersons());
@@ -94,9 +94,9 @@ public class Main {
 //        System.out.println(promotion);
 
         promotion.addStudentOrTrainerToPromotion(karine);
-        promotion.addStudentOrTrainerToPromotion(person1);
-        promotion.addStudentOrTrainerToPromotion(person2);
-        promotion.addStudentOrTrainerToPromotion(max);
+//        promotion.addStudentOrTrainerToPromotion(person1);
+//        promotion.addStudentOrTrainerToPromotion(person2);
+        promotion.addStudentOrTrainerToPromotion(xavier);
 
         System.out.println(promotion.toString());
 //        System.out.println(promotion.getTrainers());

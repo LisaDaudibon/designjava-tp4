@@ -31,15 +31,17 @@ public class Promotion {
     @Override
     public String toString() {
         StringBuilder message = new StringBuilder(String.format("Promotion %s N°%s\n\n", name, id));
-        if (!trainers.isEmpty())
+        if (!trainers.isEmpty()){
             message.append("👷 Formers:\n\n");
-        for (Person trainer : trainers){
-            message.append(trainer.toString()).append("\n");
+            for (Person trainer : trainers){
+                message.append(trainer.toString()).append("\n");
+            }
         }
-        if (!students.isEmpty())
+        if (!students.isEmpty()) {
             message.append("🧑‍🎓 Élèves:\n\n");
-        for (Person student : students){
-            message.append(student.toString()).append("\n");
+            for (Person student : students) {
+                message.append(student.toString()).append("\n");
+            }
         }
         return message.toString();
     }

@@ -13,7 +13,7 @@ class TrainerTest {
         String expectedString = "Formateur " + xavier.firstName + " " + xavier.lastName + "\n" +
                 "\uD83D\uDCF1: " + xavier.phoneNumber + "\n" +
                 "\uD83D\uDCE7: " + xavier.email + "\n" +
-                "\uD83C\uDFE0: " + xavier.adress;
+                "\uD83C\uDFE0: " + xavier.adress + "\n";
 
         assertEquals(expectedString, resultString);
     }

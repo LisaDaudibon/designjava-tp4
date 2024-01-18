@@ -13,8 +13,8 @@ class StudentTest {
         String expectedString = String.format("""
                  Élèves xavier cassel
                 📱: 0701059304
-                📧: Rue de dinan
-                📠: karineagile@yahoo.fr
+                📧: karineagile@yahoo.fr
+                🏠: rue de dinan
                 """);
 
         assertEquals(expectedString.trim(), resultString.trim());

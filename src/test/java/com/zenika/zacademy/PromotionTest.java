@@ -34,21 +34,23 @@ class PromotionTest {
         promotion.addStudentOrTrainerToPromotion(karine);
         promotion.addStudentOrTrainerToPromotion(max);
         String resultString = promotion.toString().trim();
-        String expectedString = "Promotion javatar N°9\n" +
-                "\n" +
-                "\uD83D\uDC77 Formers:\n" +
-                "\n" +
-                "Formateur karine sabatier\n" +
-                "\uD83D\uDCF1: 0701020304\n" +
-                "\uD83D\uDCE7: karineagile4ever@yahoo.fr\n" +
-                "\uD83C\uDFE0: rue de rennes\n" +
-                "\n" +
-                "\uD83E\uDDD1\u200D\uD83C\uDF93 Élèves:\n" +
-                "\n" +
-                "Élèves xavier cassel\n" +
-                "\uD83D\uDCF1: 0701059304\n" +
-                "\uD83D\uDCE7: Rue de dinan\n" +
-                "\uD83D\uDCE0: karineagile@yahoo.fr\n".trim();
+        String expectedString = """
+                Promotion javatar N°9
+                
+                \uD83D\uDC77 Formers:
+               
+                Formateur karine sabatier
+                \uD83D\uDCF1: 0701020304
+                \uD83D\uDCE7: karineagile4ever@yahoo.fr
+                \uD83C\uDFE0: rue de rennes
+                
+                \uD83E\uDDD1\u200D\uD83C\uDF93 Élèves:
+                
+                Élèves xavier cassel
+                \uD83D\uDCF1: 0701059304
+                \uD83D\uDCE7: karineagile@yahoo.fr
+                🏠: rue de dinan
+                        """.trim();
 
         assertEquals(expectedString, resultString);
     }
@@ -57,16 +59,32 @@ class PromotionTest {
     void shouldFormatTheMessageForStudentsInPromotion() {
         promotion.addStudentOrTrainerToPromotion(max);
         String resultString = promotion.toString().trim();
-        String expectedString = "Promotion javatar N°9\n" +
-                "\n" +
-
-                "\uD83E\uDDD1\u200D\uD83C\uDF93 Élèves:\n" +
-                "\n" +
-                "Élèves xavier cassel\n" +
-                "\uD83D\uDCF1: 0701059304\n" +
-                "\uD83D\uDCE7: Rue de dinan\n" +
-                "\uD83D\uDCE0: karineagile@yahoo.fr\n".trim();
-
+        String expectedString = """
+                Promotion javatar N°9
+                
+                \uD83E\uDDD1\u200D\uD83C\uDF93 Élèves:
+                
+                Élèves xavier cassel
+                \uD83D\uDCF1: 0701059304
+                \uD83D\uDCE7: karineagile@yahoo.fr
+                🏠: rue de dinan
+                """.trim();
+        assertEquals(expectedString, resultString);
+    }
+    @Test
+    void shouldFormatTheMessageForTrainersInPromotion() {
+        promotion.addStudentOrTrainerToPromotion(karine);
+        String resultString = promotion.toString().trim();
+        String expectedString = """
+                Promotion javatar N°9
+                
+                👷 Formers:
+                                
+                Formateur karine sabatier
+                \uD83D\uDCF1: 0701020304
+                \uD83D\uDCE7: karineagile4ever@yahoo.fr
+                \uD83C\uDFE0: rue de rennes
+                """.trim();
         assertEquals(expectedString, resultString);
     }
 }

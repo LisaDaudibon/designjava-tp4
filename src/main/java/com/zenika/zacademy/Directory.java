@@ -19,14 +19,6 @@ public class Directory {
     public Person SearchByName (String searchNamed) {
         String searchNamedByLowerCase = searchNamed.toLowerCase();
 
-//        for (Person currentPerson : persons) {
-//            if (searchNamedByLowerCase.contains(currentPerson.firstName) ||searchNamedByLowerCase.contains(currentPerson.lastName)) {
-//                return currentPerson;
-//            }
-//        }
-//
-//        return null;
-
         List <Person> personFound = persons.stream().filter(currentPerson -> {
             if (searchNamedByLowerCase.contains(currentPerson.firstName) ||searchNamedByLowerCase.contains(currentPerson.lastName)) {
                 return true;
@@ -40,7 +32,23 @@ public class Directory {
             System.out.println(personFound.getFirst());
             return personFound.getFirst();
         }
+    }
 
+    public void createDirectoryOfPromotion ( Promotion newPromotion) {
+        promotions.add(newPromotion);
+    }
+
+    public String searchByPromotionNumber (Integer promotionNumber) {
+        List <Promotion> promotionFound = promotions.stream().filter(currentPromotion -> {
+            return promotionNumber.equals(currentPromotion.id);
+        }).toList();
+
+        if (promotionFound.isEmpty()) {
+            return ("Aucune promotion trouvée");
+        } else {
+            ;
+            return promotionFound.toString();
+        }
     }
 
 }

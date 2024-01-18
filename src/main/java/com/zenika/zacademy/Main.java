@@ -8,53 +8,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    final static int FAKER_HASHSET_LENGTH = 10;
     public static void main(String[] args) {
-//        Faker faker = new Faker(new Locale("fr"));
-//
-//        String firstName = faker.name().firstName();
-//        String lastName = faker.name().lastName();
-//        String phoneNumber = faker.phoneNumber().phoneNumber();
-//        String email = faker.internet().emailAddress();
-//        String adress = faker.address().fullAddress();
-//
-//        Person maximilien = new Student(firstName, lastName, phoneNumber, email, adress);
-
-        int FAKER_HASHSET_LENGTH = 10;
-
         Faker faker = new Faker(new Locale("fr"));
-        List<String> firstNames =
-                faker.collection(
-                                () -> faker.name().firstName())
-                        .len(FAKER_HASHSET_LENGTH)
-                        .generate();
 
-        List<String> lastNames =
-                faker.collection(
-                                () -> faker.name().lastName())
-                        .len(FAKER_HASHSET_LENGTH)
-                        .generate();
-
-        List<String> phoneNumber =
-                faker.collection(
-                                () -> faker.phoneNumber().phoneNumber())
-                        .len(FAKER_HASHSET_LENGTH)
-                        .generate();
-
-        List<String> address =
-                faker.collection(
-                                () -> faker.address().streetAddress())
-                        .len(FAKER_HASHSET_LENGTH)
-                        .generate();
-
-        List<String> email =
-                faker.collection(
-                                () -> faker.internet().emailAddress())
-                        .len(FAKER_HASHSET_LENGTH)
-                        .generate();
-
+        List<String> firstNames = faker.collection(() -> faker.name().firstName()).len(FAKER_HASHSET_LENGTH).generate();
+        List<String> lastNames = faker.collection(() -> faker.name().lastName()).len(FAKER_HASHSET_LENGTH).generate();
+        List<String> phoneNumber = faker.collection(() -> faker.phoneNumber().phoneNumber()).len(FAKER_HASHSET_LENGTH).generate();
+        List<String> address = faker.collection(() -> faker.address().streetAddress()).len(FAKER_HASHSET_LENGTH).generate();
+        List<String> email = faker.collection(() -> faker.internet().emailAddress()).len(FAKER_HASHSET_LENGTH).generate();
 
         Directory directory = new Directory();
-
 
         Person person1 = new Student(firstNames.get(0), lastNames.get(0), phoneNumber.get(0), address.get(0), email.get(0));
         Person person2 = new Trainer(firstNames.get(1), lastNames.get(1), phoneNumber.get(1), address.get(1), email.get(1));
@@ -81,26 +45,18 @@ public class Main {
         Person karine = new Trainer("Karine", "Sabatier", "0701020304", "Rue de rennes", "karineagile4ever@yahoo.fr");
         Person xavier = new Student("Xavier", "Cassel", "0701059304", "Rue de dinan", "karineagile@yahoo.fr");
         directory.addUnique(karine);
-//        System.out.println(karine);
-//        System.out.println(directory.getPersons());
-//
+
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Qui recherchez vous ? ");
 //
 //        String userInput = sc.nextLine();
-//        directory.SearchByName(userInput);
 
         Promotion promotion = new Promotion(9, "javatar");
-//        System.out.println(promotion);
-
+        directory.createDirectoryOfPromotion(promotion);
         promotion.addStudentOrTrainerToPromotion(karine);
-//        promotion.addStudentOrTrainerToPromotion(person1);
-//        promotion.addStudentOrTrainerToPromotion(person2);
         promotion.addStudentOrTrainerToPromotion(xavier);
 
-        System.out.println(promotion.toString());
-//        System.out.println(promotion.getTrainers());
-
+        System.out.println(directory.searchByPromotionNumber(9));
     }
 
 }

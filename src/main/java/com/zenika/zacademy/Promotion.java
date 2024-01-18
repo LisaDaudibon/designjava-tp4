@@ -40,11 +40,9 @@ public class Promotion {
         if (!students.isEmpty()) {
             message.append("🧑‍🎓 Élèves:\n\n");
             for (Person student : students) {
-                message.append(student.toString()).append("\n");
+                message.append(student.toString());
             }
         }
         return message.toString();
     }
-
-
 }

@@ -2,13 +2,29 @@ package com.zenika.zacademy;
 
 import net.datafaker.Faker;
 
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     final static int FAKER_HASHSET_LENGTH = 10;
+    private static void askingUserPromotionSearchRequest( Directory directory) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Quelle promotion cherchez vous ? Taper 0 pour quitter. Entrez votre recherche :");
+        int userSearch = 1000;
+        while (userSearch > 0) {
+            try {
+                userSearch = sc.nextInt();
+                System.out.println(directory.searchByPromotionNumber(userSearch));
+                System.out.println("Taper 0 pour quitter ou cherchez un nouveau numéro de promotion : ");
+            } catch (InputMismatchException exception) {
+                System.out.println("Ce n'est pas un chiffre. ");
+                sc.next();
+            } catch (NoSuchElementException exception) {
+                System.out.println("Aucune promotion trouvée ! ");
+            } finally {
+                System.out.println("Taper 0 pour quitter ou rentrer le numéro de la promotion que vous recherchez : ");
+            }
+        }
+    }
     public static void main(String[] args) {
         Faker faker = new Faker(new Locale("fr"));
 
@@ -17,8 +33,6 @@ public class Main {
         List<String> phoneNumber = faker.collection(() -> faker.phoneNumber().phoneNumber()).len(FAKER_HASHSET_LENGTH).generate();
         List<String> address = faker.collection(() -> faker.address().streetAddress()).len(FAKER_HASHSET_LENGTH).generate();
         List<String> email = faker.collection(() -> faker.internet().emailAddress()).len(FAKER_HASHSET_LENGTH).generate();
-
-        Directory directory = new Directory();
 
         Person person1 = new Student(firstNames.get(0), lastNames.get(0), phoneNumber.get(0), address.get(0), email.get(0));
         Person person2 = new Trainer(firstNames.get(1), lastNames.get(1), phoneNumber.get(1), address.get(1), email.get(1));
@@ -30,6 +44,8 @@ public class Main {
         Person person8 = new Trainer(firstNames.get(7), lastNames.get(7), phoneNumber.get(7), address.get(7), email.get(7));
         Person person9 = new Trainer(firstNames.get(8), lastNames.get(8), phoneNumber.get(8), address.get(8), email.get(8));
         Person person10 = new Trainer(firstNames.get(9), lastNames.get(9), phoneNumber.get(9), address.get(9), email.get(9));
+
+        Directory directory = new Directory();
 
         directory.addUnique(person1);
         directory.addUnique(person2);
@@ -46,17 +62,11 @@ public class Main {
         Person xavier = new Student("Xavier", "Cassel", "0701059304", "Rue de dinan", "karineagile@yahoo.fr");
         directory.addUnique(karine);
 
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Qui recherchez vous ? ");
-//
-//        String userInput = sc.nextLine();
-
         Promotion promotion = new Promotion(9, "javatar");
         directory.createDirectoryOfPromotion(promotion);
         promotion.addStudentOrTrainerToPromotion(karine);
         promotion.addStudentOrTrainerToPromotion(xavier);
 
-        System.out.println(directory.searchByPromotionNumber(9));
+        askingUserPromotionSearchRequest(directory);
     }
-
 }

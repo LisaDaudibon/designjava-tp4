@@ -4,9 +4,12 @@ import java.util.*;
 
 public class Directory {
     public HashSet<Person> persons = new HashSet<>();
-
+    public HashSet<Promotion> promotions = new HashSet<>();
     public HashSet<Person> getPersons() {
         return persons;
+    }
+    public HashSet<Promotion> getPromotions() {
+        return new HashSet<>(promotions);
     }
 
     public void addUnique(Person newPerson) {
